@@ -95,11 +95,11 @@ curl -X POST \
 
 A basic JSON report exists at http://localhost:3000/reports/monthly_report
 
-● Sum of total revenue from all products ordered in the month
-● Quantity of each product type ordered
-● Top spending customer of the month
-● Top spending customer of the year
-● Email addresses of all customers who purchased that month’s feature product
+- Sum of total revenue from all products ordered in the month
+- Quantity of each product type ordered
+- Top spending customer of the month
+- Top spending customer of the year
+- Email addresses of all customers who purchased that month’s feature product
 
 ## Basic Entities
 
