@@ -106,7 +106,6 @@ GEM
       net-imap
       net-pop
       net-smtp
-    map (6.6.0)
     marcel (1.0.2)
     mini_mime (1.1.5)
     minitest (5.20.0)
@@ -168,12 +167,6 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
-    rails_current (2.2.0)
-      map (~> 6.0)
-    rails_default_url_options (6.0.0)
-    rails_helper (2.2.2)
-      rails_current (>= 1.0)
-      rails_default_url_options (>= 1.0)
     railties (7.1.2)
       actionpack (= 7.1.2)
       activesupport (= 7.1.2)
@@ -218,7 +211,6 @@ DEPENDENCIES
   debug
   puma (>= 5.0)
   rails (~> 7.1.2)
-  rails_helper (>= 2.2.2)
   sqlite3 (~> 1.4)
   tzinfo-data
 
