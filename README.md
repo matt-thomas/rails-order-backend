@@ -143,7 +143,6 @@ Basic test coverage exists for order creation and update.
 ## Major next steps.
 
 - More robust unit tests, including reporting.
-- Better rollback on update (currently line items/shipment could be in a strange state after a failed update)
 - More validation of phone, email, address, etc.
 - Multiple shipments per order.
 - More tracking of order edits: currently if line items are changed those references don't persist, so price history doesn't exist in case of multiple order edits.
