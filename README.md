@@ -101,6 +101,7 @@ A basic JSON report exists at http://localhost:3000/reports/monthly_report
 
 - Sum of total revenue from all products ordered in the month
 - Quantity of each product type ordered
+- Quantity of each product sku ordered
 - Top spending customer of the month
 - Top spending customer of the year
 - Email addresses of all customers who purchased that month’s feature product
@@ -126,6 +127,14 @@ References order and address, stores shipment method.
 ### Address
 
 Represents an address, is referenced by shipment.
+
+### Product
+
+Represents a product, is referenced by line item and featured product. Products have a price, sku, name, and type. 
+
+### Featured Product
+
+Represents a monthly featured product. References product and stores month and integer.
 
 ## Tests
 

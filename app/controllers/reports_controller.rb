@@ -6,11 +6,16 @@ class ReportsController < ApplicationController
     month = Date.today.month
     total_revenue_month = LineItem.joins(:order, :product)
                                   .where("strftime('%m', orders.created_at) = ?", '%02d' % month)
-                                  .sum("line_items.quantity * products.price")
+                                  .sum("line_items.quantity * line_items.price")
 
     # Calculate quantity of each product type ordered
     product_quantities = LineItem.joins(:product)
                                  .group("products.product_type")
+                                 .sum("line_items.quantity")
+
+    # Calculate quantity of each product sku ordered
+    product_quantities_by_sku = LineItem.joins(:product)
+                                 .group("products.sku")
                                  .sum("line_items.quantity")
 
     # Find top spending customer of the month
@@ -46,8 +51,9 @@ class ReportsController < ApplicationController
     end
 
     report = {
-      total_revenue_month: total_revenue_month,
+      total_revenue_month: total_revenue_month.round(2),
       product_quantities: product_quantities,
+      product_quantities_by_sku: product_quantities_by_sku,
       top_spending_customer_month: top_spending_customer_month,
       top_spending_customer_year: top_spending_customer_year,
       customers_purchased_featured_product: customers_purchased_featured_product
