@@ -27,7 +27,7 @@ bin/rails server
 
 ### Create
 
-curl -X POST \
+```curl -X POST \
   -H "Content-Type: application/json" \
   -d '{
         "customer_id": "12345",
@@ -58,9 +58,11 @@ curl -X POST \
         }
       }' \
   http://localhost:3000/orders/create
+  ```
 
 ### Order Update
 
+```
 curl -X POST \
   -H "Content-Type: application/json" \
   -d '{
@@ -87,6 +89,7 @@ curl -X POST \
         }
       }' \
       http://localhost:3000/orders/update
+```
 
 ## Basic Report
 
