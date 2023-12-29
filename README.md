@@ -13,15 +13,19 @@ This is a basic order/product/shipment Rails application.
 
 ### Bundle Install
 
-bundle install
+`bundle install`
 
 ### Drop and Recreate DB
 
-bin/rails db:drop; bin/rails db:create; bin/rails db:migrate; bin/rails db:seed
+`bin/rails db:drop; bin/rails db:create; bin/rails db:migrate; bin/rails db:seed`
 
 ### Run Server
 
-bin/rails server
+`bin/rails server`
+
+### Run Tests
+
+`bin/rails test`
 
 ## API Endpoint Usage
 

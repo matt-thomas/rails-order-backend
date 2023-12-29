@@ -38,5 +38,5 @@ p3 = Product.create({
 
 FeaturedProduct.create({
     product: p1,
-    month: 6,
+    month: 12,
 })

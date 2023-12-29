@@ -33,13 +33,17 @@ class ReportsController < ApplicationController
 
     # Find email addresses of customers who purchased this month's featured product
     featured_product_this_month = FeaturedProduct.find_by(month: month)
-    customers_purchased_featured_product = Order.joins(:customer)
-                                                .joins(:line_items)
-                                                .joins("INNER JOIN shipments ON shipments.order_id = orders.id")
-                                                .joins("INNER JOIN addresses ON addresses.id = shipments.address_id")
-                                                .where("line_items.product_id = ?", featured_product_this_month.product_id)
-                                                .pluck("addresses.email")
-                                                .uniq
+    if featured_product_this_month
+      customers_purchased_featured_product = Order.joins(:customer)
+                                                  .joins(:line_items)
+                                                  .joins("INNER JOIN shipments ON shipments.order_id = orders.id")
+                                                  .joins("INNER JOIN addresses ON addresses.id = shipments.address_id")
+                                                  .where("line_items.product_id = ?", featured_product_this_month.product_id)
+                                                  .pluck("addresses.email")
+                                                  .uniq
+    else
+      customers_purchased_featured_product = []
+    end
 
     report = {
       total_revenue_month: total_revenue_month,
