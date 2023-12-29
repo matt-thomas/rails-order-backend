@@ -142,7 +142,6 @@ Basic test coverage exists for order creation and update.
 
 ## Major next steps.
 
-- Change featured product to store year.
 - More robust unit tests, including reporting.
 - More validation of phone, email, address, etc.
 - Multiple shipments per order.

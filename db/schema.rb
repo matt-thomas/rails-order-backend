@@ -35,6 +35,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_27_221822) do
   create_table "featured_products", force: :cascade do |t|
     t.integer "product_id"
     t.integer "month"
+    t.integer "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

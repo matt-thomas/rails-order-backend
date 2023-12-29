@@ -2,42 +2,46 @@
 
 class ReportsController < ApplicationController
   def monthly_report
-    # Calculate sum of total revenue from all products ordered in the month
+    # month = params[:month].to_i || Date.today.month
+    # year = params[:year].to_i || Date.today.year
+
     month = Date.today.month
+    year = Date.today.year
+
+    p month
+    p year
+
     total_revenue_month = LineItem.joins(:order, :product)
-                                  .where("strftime('%m', orders.created_at) = ?", '%02d' % month)
+                                  .where("strftime('%Y', orders.created_at) = ? AND strftime('%m', orders.created_at) = ?", year.to_s, '%02d' % month)
                                   .sum("line_items.quantity * line_items.price")
 
-    # Calculate quantity of each product type ordered
     product_quantities = LineItem.joins(:product)
+                                 .where("strftime('%Y', line_items.created_at) = ? AND strftime('%m', line_items.created_at) = ?", year.to_s, '%02d' % month)
                                  .group("products.product_type")
                                  .sum("line_items.quantity")
 
-    # Calculate quantity of each product sku ordered
     product_quantities_by_sku = LineItem.joins(:product)
+                                 .where("strftime('%Y', line_items.created_at) = ? AND strftime('%m', line_items.created_at) = ?", year.to_s, '%02d' % month)
                                  .group("products.sku")
                                  .sum("line_items.quantity")
 
-    # Find top spending customer of the month
     top_spending_customer_month = Order.joins(:customer)
-                                       .where("strftime('%m', orders.created_at) = ?", '%02d' % month)
+                                       .where("strftime('%Y', orders.created_at) = ? AND strftime('%m', orders.created_at) = ?", year.to_s, '%02d' % month)
                                        .group("orders.customer_id")
                                        .order("SUM(orders.order_total) DESC")
                                        .limit(1)
                                        .pluck("customers.customer_external_id")
                                        .first
 
-    # Find top spending customer of the year
     top_spending_customer_year = Order.joins(:customer)
-                                      .where("strftime('%Y', orders.created_at) = ?", Date.today.year.to_s)
+                                      .where("strftime('%Y', orders.created_at) = ?", year.to_s)
                                       .group("orders.customer_id")
                                       .order("SUM(orders.order_total) DESC")
                                       .limit(1)
                                       .pluck("customers.customer_external_id")
                                       .first
 
-    # Find email addresses of customers who purchased this month's featured product
-    featured_product_this_month = FeaturedProduct.find_by(month: month)
+    featured_product_this_month = FeaturedProduct.find_by(month: month, year: year)
     if featured_product_this_month
       customers_purchased_featured_product = Order.joins(:customer)
                                                   .joins(:line_items)

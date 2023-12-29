@@ -1,4 +1,4 @@
 class FeaturedProduct < ApplicationRecord
     belongs_to :product
-    validates :month, presence: true, uniqueness: true
+    validates :month, :year, presence: true
 end

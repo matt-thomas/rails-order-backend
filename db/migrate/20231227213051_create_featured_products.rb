@@ -3,6 +3,7 @@ class CreateFeaturedProducts < ActiveRecord::Migration[7.1]
     create_table :featured_products do |t|
       t.integer :product_id
       t.integer :month
+      t.integer :year
 
       t.timestamps
     end
