@@ -2,14 +2,12 @@
 
 class ReportsController < ApplicationController
   def monthly_report
+    # TODO Fix this.
     # month = params[:month].to_i || Date.today.month
     # year = params[:year].to_i || Date.today.year
 
     month = Date.today.month
     year = Date.today.year
-
-    p month
-    p year
 
     total_revenue_month = LineItem.joins(:order, :product)
                                   .where("strftime('%Y', orders.created_at) = ? AND strftime('%m', orders.created_at) = ?", year.to_s, '%02d' % month)
