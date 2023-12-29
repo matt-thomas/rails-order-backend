@@ -134,7 +134,7 @@ Represents a product, is referenced by line item and featured product. Products 
 
 ### Featured Product
 
-Represents a monthly featured product. References product and stores month and integer.
+Represents a monthly featured product. References product and stores month.
 
 ## Tests
 
@@ -142,6 +142,7 @@ Basic test coverage exists for order creation and update.
 
 ## Major next steps.
 
+- Change featured product to store year.
 - More robust unit tests, including reporting.
 - More validation of phone, email, address, etc.
 - Multiple shipments per order.
