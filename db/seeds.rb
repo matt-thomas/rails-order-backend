@@ -31,3 +31,9 @@ FeaturedProduct.create({
     month: 12,
     year: 2023,
 })
+
+FeaturedProduct.create({
+    product: p3,
+    month: 1,
+    year: 2024,
+})
